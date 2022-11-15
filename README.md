@@ -27,7 +27,12 @@ go run .
 ```
 and the output:
 ```
-Your OTP: 836920
+Start generating TOTP.
+Unix time: 1668508210, Your OTP: 331994
+Unix time: 1668508215, Your OTP: 331994
+Unix time: 1668508220, Your OTP: 331994
+Unix time: 1668508225, Your OTP: 331994
+Unix time: 1668508230, Your OTP: 998196
 ```
 To change key, digits, and step size, go to `main.go`:
 ```
