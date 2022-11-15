@@ -2,7 +2,7 @@ package main
 
 import (
 	"crypto/sha1"
-	"fmt"
+	"log"
 	"os"
 	"os/signal"
 	"syscall"
@@ -17,14 +17,15 @@ func main() {
 
 	tick := time.Tick(time.Second * 5)
 
-	fmt.Println("Start generating TOTP.")
+	log.Println("Start generating TOTP.")
 	for {
 		select {
 		case <-done:
+			log.Println("Interrupt received.")
 			return
-		case t := <-tick:
+		case <-tick:
 			password := totp.GenerateTOTP([]byte("my-secret"), sha1.New, 6, 30)
-			fmt.Printf("Unix time: %v, Your OTP: %s\n", t.Unix(), password)
+			log.Printf("Your OTP: %s\n", password)
 		}
 	}
 }
